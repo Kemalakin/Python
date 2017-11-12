@@ -1,4 +1,4 @@
-
+For details see [Matplotlib documentation.](https://matplotlib.org/users/customizing.html)
 
 ```python
 # In order to use various plotting styles with matplotlib
