@@ -25,6 +25,7 @@ def Friedmann(a,m,r,l):
 
     return t
 
+# Trapezoid Integration Method:
 def Trapezoidal(a,b,m,r,l):
     n = 1000                 # Step number
     deltaX = (b-a)/n         # Step size
@@ -52,11 +53,11 @@ def Trapezoidal(a,b,m,r,l):
 plt.rc('text', usetex=True)  #In order to use LaTeX
 plt.rc('font', family='serif') #In order to use Serif (mathced font with LaTeX)
 
-
 a,t,age = Trapezoidal(1e-10,10,0.3,0,0.68)
 a1,t1,age1 = Trapezoidal(1e-10,10,1,0,-0.3)
 a2,t2,age2 = Trapezoidal(1e-10,10,0.6,0.1,0.3)
 
+# Visualize:
 def update(num, t, a,t1,a1,t2,a2, line1,line2,line3):
     line1.set_data(t[:num], a[:num])
     line1.axes.axis([0, 80, 0, 5])
@@ -73,25 +74,16 @@ line1, = ax1.plot(t, a, color='blue', label = '$\Lambda$ - CDM')
 line2, = ax1.plot(t1, a1, color='orange', label = '$\Lambda$ Collapse')
 line3, = ax1.plot(t2, a2, color='red', label = '$\Omega_m = 0.6, \Omega_\Lambda = 0.3$')
 
-'''
-for ax in (ax1, ax2,ax3):
-    ax.set_xlim(0, 1)
-    ax.set_ylim(0, 1)
-    ax.set_xlabel('x')
-    ax.set_title('test')
-'''
-
 ax1.set_xlabel('$t$ (Gyr)')
 ax1.set_ylabel('$a(t)$')
 ax1.legend()
-
-
-
 
 ani = animation.FuncAnimation(fig, update, len(a), fargs=[t, a, t1,a1,t2,a2,line1,line2,line3],
                               interval=15, blit=True)
 
 ani.save('FRW1.mp4',extra_args=['-vcodec', 'libx264'])
+
+# Marker on the current ages
 ax1.scatter(age,1,color='blue')
 ax1.scatter(age1,1,color='orange')
 ax1.scatter(age2,1,color='red')
