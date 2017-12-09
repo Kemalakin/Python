@@ -91,7 +91,7 @@ ax1.legend()
 ani = animation.FuncAnimation(fig, update, len(a), fargs=[t, a, t1,a1,t2,a2,line1,line2,line3],
                               interval=15, blit=True)
 
-#ani.save('FRW1.mp4',extra_args=['-vcodec', 'libx264'])
+ani.save('FRW1.mp4',extra_args=['-vcodec', 'libx264'])
 ax1.scatter(age,1,color='blue')
 ax1.scatter(age1,1,color='orange')
 ax1.scatter(age2,1,color='red')
